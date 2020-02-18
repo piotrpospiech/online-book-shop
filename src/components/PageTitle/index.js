@@ -5,7 +5,7 @@ const PageTitle = (props) => {
   const { leftColor, rightColor, title } = props;
 
   return (
-    <div 
+    <header 
       style={{ 
         backgroundImage: `linear-gradient(to right, ${leftColor}, ${rightColor})`,
         position: 'relative',
@@ -23,7 +23,7 @@ const PageTitle = (props) => {
           textTransform: 'uppercase'
         }}
       >{title}</h1>
-    </div>
+    </header>
   );
 };
 

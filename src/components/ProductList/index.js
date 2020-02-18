@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Grid, Responsive, Image } from 'semantic-ui-react';
+import { Container, Grid, Responsive } from 'semantic-ui-react';
 
 import ProductCard from '../ProductCard';
 

@@ -8,12 +8,11 @@ import { products } from './products';
 class Shop extends Component {
 
   render() {
-
     return (
-      <div>
+      <main>
         <PageTitle title='shop' leftColor='#343144' rightColor='#4ebbd2' />
         <ProductList products={products} />
-      </div>
+      </main>
     );
   }
 };
