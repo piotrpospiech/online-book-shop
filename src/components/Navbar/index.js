@@ -19,7 +19,10 @@ class Navbar extends Component {
     return (
       <Menu pointing secondary>
         <Container>
-          <Menu.Item>
+          <Menu.Item 
+            as={ Link }
+            to='/'
+          >
             <img src='../../../public/logo.png' />
           </Menu.Item>
   
