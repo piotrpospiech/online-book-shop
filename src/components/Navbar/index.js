@@ -14,7 +14,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { activeItem } = this.state
+    const activeItem = this.state.activeItem || 'shop';
 
     return (
       <Menu pointing secondary>
@@ -22,6 +22,8 @@ class Navbar extends Component {
           <Menu.Item 
             as={ Link }
             to='/'
+            name='shop'
+            onClick={this.handleItemClick}
           >
             <img src='../../../public/logo.png' />
           </Menu.Item>
