@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Container } from 'semantic-ui-react';
 
 import PageTitle from '../PageTitle';
+import ProductList from '../ProductList';
+
+import { products } from './products';
 
 class Shop extends Component {
 
@@ -10,6 +12,7 @@ class Shop extends Component {
     return (
       <div>
         <PageTitle title='shop' leftColor='#343144' rightColor='#4ebbd2' />
+        <ProductList products={products} />
       </div>
     );
   }
