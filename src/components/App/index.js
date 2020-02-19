@@ -5,10 +5,11 @@ import Navbar from '../Navbar';
 import Shop from '../Shop';
 import Cart from '../Cart';
 import Details from '../Details';
+import Login from '../Login';
 
 const App = () => {
   return (
-    <Router history={history}>
+    <Router>
       <Navbar />
       <Route exact path='/' component={Shop} />
       <Route path='/cart' component={Cart} />
@@ -18,6 +19,8 @@ const App = () => {
         </Route>
         <Route path='/details/:slug' children={<Details />} />
       </Switch>
+
+      <Route path='/admin-login' component={Login} />
     </Router>
   );
 };
