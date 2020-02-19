@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { Container, Menu } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Navbar extends Component {
 
   constructor(props) {
     super(props)
     this.state = {};
-  }
-
-  handleItemClick = (e, { name }) => {
-    this.setState({ activeItem: name });
   }
 
   renderMenu = () => {
@@ -21,26 +17,23 @@ class Navbar extends Component {
     console.log(loginMenu);
 
     if (adminMenu) {
-      const activeItem = this.state.activeItem || 'dashboard';
       return (
         <Menu.Menu position='right'>
           <Menu.Item
-              as={ Link }
+              as={ NavLink }
               to='/admin-panel/dashboard'
               name='dashboard'
               style={{ height: '100%' }}
-              active={activeItem === 'dashboard'}
               onClick={this.handleItemClick}
             >
             Dashboard
           </Menu.Item>
           
           <Menu.Item
-            as={ Link }
+            as={ NavLink }
             to='/admin-panel/products'
             name='products'
             style={{ height: '100%' }}
-            active={activeItem === 'products'}
             onClick={this.handleItemClick}
           >
             Products
@@ -52,27 +45,22 @@ class Navbar extends Component {
       return null;
     }
     else {
-      const activeItem = this.state.activeItem || 'shop';
       return (
         <Menu.Menu position='right'>
           <Menu.Item
-              as={ Link }
-              to='/'
+              as={ NavLink }
+              to='/shop'
               name='shop'
               style={{ height: '100%' }}
-              active={activeItem === 'shop'}
-              onClick={this.handleItemClick}
             >
             Shop
           </Menu.Item>
           
           <Menu.Item
-            as={ Link }
+            as={ NavLink }
             to='/cart'
             name='cart'
             style={{ height: '100%' }}
-            active={activeItem === 'cart'}
-            onClick={this.handleItemClick}
           >
             Cart
           </Menu.Item>
@@ -86,7 +74,7 @@ class Navbar extends Component {
       <Menu pointing secondary>
         <Container>
           <Menu.Item 
-            as={ Link }
+            as={ NavLink }
             to='/'
             name='shop'
             onClick={this.handleItemClick}

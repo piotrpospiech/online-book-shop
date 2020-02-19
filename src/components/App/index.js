@@ -11,16 +11,18 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <Route exact path='/' component={Shop} />
-      <Route path='/cart' component={Cart} />
       <Switch>
-        <Route exact path='/details'>
-          <Redirect to="/" />
-        </Route>
+        <Route path='/admin-login' component={Login} />
         <Route path='/details/:slug' children={<Details />} />
+        <Route path='/details'>
+          <Redirect to='/shop' />
+        </Route>
+        <Route path='/cart' component={Cart} />
+        <Route path='/shop' component={Shop} />
+        <Route path='/'>
+          <Redirect to='/shop' />
+        </Route>
       </Switch>
-
-      <Route path='/admin-login' component={Login} />
     </Router>
   );
 };
