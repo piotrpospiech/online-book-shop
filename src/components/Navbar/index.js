@@ -9,20 +9,20 @@ class Navbar extends Component {
     this.state = {};
   }
 
+  handleItemClick = (_, { name }) => this.setState({ activeItem: name })
+
   renderMenu = () => {
 
     const adminMenu = document.location.href.includes('admin-panel');
     const loginMenu = document.location.href.includes('admin-login');
 
-    console.log(loginMenu);
-
-    if (adminMenu) {
+    if (adminMenu || this.state.activeItem === 'adminMenu') {
       return (
         <Menu.Menu position='right'>
           <Menu.Item
               as={ NavLink }
               to='/admin-panel/dashboard'
-              name='dashboard'
+              name='adminMenu'
               style={{ height: '100%' }}
               onClick={this.handleItemClick}
             >
@@ -32,7 +32,7 @@ class Navbar extends Component {
           <Menu.Item
             as={ NavLink }
             to='/admin-panel/products'
-            name='products'
+            name='adminMenu'
             style={{ height: '100%' }}
             onClick={this.handleItemClick}
           >
@@ -41,7 +41,7 @@ class Navbar extends Component {
         </Menu.Menu>
       );
     }
-    else if (loginMenu) {
+    else if (loginMenu || this.state.activeItem === 'adminMenu') {
       return null;
     }
     else {
@@ -50,8 +50,9 @@ class Navbar extends Component {
           <Menu.Item
               as={ NavLink }
               to='/shop'
-              name='shop'
+              name='customerMenu'
               style={{ height: '100%' }}
+              onClick={this.handleItemClick}
             >
             Shop
           </Menu.Item>
@@ -59,8 +60,9 @@ class Navbar extends Component {
           <Menu.Item
             as={ NavLink }
             to='/cart'
-            name='cart'
+            name='customerMenu'
             style={{ height: '100%' }}
+            onClick={this.handleItemClick}
           >
             Cart
           </Menu.Item>
@@ -75,7 +77,7 @@ class Navbar extends Component {
         <Container>
           <Menu.Item 
             as={ NavLink }
-            to='/'
+            to='/shop'
             name='shop'
             onClick={this.handleItemClick}
           >
