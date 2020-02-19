@@ -6,8 +6,6 @@ import { fetchProducts } from '../../store/actions';
 import PageTitle from '../PageTitle';
 import ProductList from '../ProductList';
 
-import { products } from './products';
-
 class Shop extends Component {
 
   componentDidMount() {
@@ -16,12 +14,12 @@ class Shop extends Component {
 
   render() {
 
-    const { products } = this.props.products;
+    const products = this.props.products;
 
     return (
       <main>
         <PageTitle title='shop' leftColor='#343144' rightColor='#4ebbd2' />
-        <ProductList products={this.props.products} />
+        <ProductList products={products} />
       </main>
     );
   }
@@ -31,7 +29,7 @@ const mapStateToProps = (state) => {
   return {
       products: state.products
   };
-}
+};
 
 export default connect(mapStateToProps, {
   fetchProducts
