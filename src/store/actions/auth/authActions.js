@@ -9,6 +9,9 @@ export const loginUser = (data) => async dispatch => {
       type: LOGIN_USER,
       payload: response.data
     });
+
+    const jwt = response.data.token;
+    localStorage.setItem('jwt', jwt);
   } catch (err) {
     console.error(err);
   }

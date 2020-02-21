@@ -36,9 +36,8 @@ class Login extends Component {
           this.setState({ hideMessage: false });
         }
         else {
-          localStorage.setItem('jwt', response.token);
           this.props.history.push('/admin-panel');
-          window.location.reload();
+          // window.location.reload();
         }
       }
       catch (err) {
