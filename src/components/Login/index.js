@@ -28,16 +28,10 @@ class Login extends Component {
       const loginData = { username, password }
 
       try {
-        await this.props.loginUser(loginData);
+        this.props.loginUser(loginData);
 
-        const response = this.props.auth;
-
-        if (response.message) {
+        if (!this.props.auth.isAuthenticated) {
           this.setState({ hideMessage: false });
-        }
-        else {
-          this.props.history.push('/admin-panel');
-          // window.location.reload();
         }
       }
       catch (err) {

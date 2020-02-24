@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Container, Menu } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
@@ -9,22 +10,22 @@ class Navbar extends Component {
     this.state = {};
   }
 
-  handleItemClick = (_, { name }) => this.setState({ activeItem: name })
+  logoutUser = () => {
+    localStorage.removeItem('jwt');
+    document.location.reload();
+  };
 
   renderMenu = () => {
 
-    const adminMenu = document.location.href.includes('admin-panel');
     const loginMenu = document.location.href.includes('admin-login');
 
-    if (adminMenu || this.state.activeItem === 'adminMenu') {
+    if (this.props.auth.isAuthenticated) {
       return (
         <Menu.Menu position='right'>
           <Menu.Item
               as={ NavLink }
               to='/admin-panel/dashboard'
-              name='adminMenu'
               style={{ height: '100%' }}
-              onClick={this.handleItemClick}
             >
             Dashboard
           </Menu.Item>
@@ -32,16 +33,21 @@ class Navbar extends Component {
           <Menu.Item
             as={ NavLink }
             to='/admin-panel/products'
-            name='adminMenu'
             style={{ height: '100%' }}
-            onClick={this.handleItemClick}
           >
             Products
+          </Menu.Item>
+
+          <Menu.Item
+            style={{ height: '100%', cursor: 'pointer' }}
+            onClick={this.logoutUser}
+          >
+            Logout
           </Menu.Item>
         </Menu.Menu>
       );
     }
-    else if (loginMenu || this.state.activeItem === 'adminMenu') {
+    else if (loginMenu) {
       return null;
     }
     else {
@@ -50,9 +56,7 @@ class Navbar extends Component {
           <Menu.Item
               as={ NavLink }
               to='/shop'
-              name='customerMenu'
               style={{ height: '100%' }}
-              onClick={this.handleItemClick}
             >
             Shop
           </Menu.Item>
@@ -60,9 +64,7 @@ class Navbar extends Component {
           <Menu.Item
             as={ NavLink }
             to='/cart'
-            name='customerMenu'
             style={{ height: '100%' }}
-            onClick={this.handleItemClick}
           >
             Cart
           </Menu.Item>
@@ -92,4 +94,10 @@ class Navbar extends Component {
   }
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+      auth: state.auth
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);

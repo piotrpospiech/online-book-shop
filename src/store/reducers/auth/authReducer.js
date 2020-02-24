@@ -2,10 +2,18 @@ import {
   LOGIN_USER
 } from '../../types';
 
-export default (state = {}, action) => {
+const initialState = {
+  isAuthenticated: false,
+  user: {}
+}
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_USER:
-      return action.payload;
+      return {
+        isAuthenticated: (action.user != undefined),
+        user: action.user
+      }
     default:
       return state;
   }
