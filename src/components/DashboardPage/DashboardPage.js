@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { fetchOrders } from '../../store/actions/orders/ordersActions';
 
 import PageTitle from '../PageTitle/PageTitle';
+import OrderList from '../OrderList/OrderList';
 
 class Dashboard extends Component {
 
@@ -33,6 +34,7 @@ class Dashboard extends Component {
   render() {
 
     const { activeItem } = this.state;
+    const { orders } = this.props;
 
     return (
       <main>
@@ -51,7 +53,7 @@ class Dashboard extends Component {
             />
           </Menu>
   
-          {/* <OrdersList /> */}
+          <OrderList orders={orders} />
         </Container>
       </main>
     );
