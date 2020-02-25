@@ -17,6 +17,10 @@ class ProductCard extends Component {
 
     const { active } = this.state;
     const { image, title, slug, author, price } = this.props.product;
+    const { admin } = this.props;
+
+    const buttonText = admin ? 'Edit' : 'Details';
+    const goTo = admin ? `edit/${slug}` : `details/${slug}`;
 
     const content = (
       <div>
@@ -24,10 +28,10 @@ class ProductCard extends Component {
         <br />
         <Button 
           as={Link} 
-          to={`/details/${slug}`}
+          to={goTo}
           style={{ marginTop: '20px' }}
         >
-          Details
+          {buttonText}
         </Button>
       </div>
     );
