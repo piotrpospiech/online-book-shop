@@ -4,8 +4,8 @@ import { Container, Button } from 'semantic-ui-react';
 
 import { fetchProducts } from '../../store/actions';
 
-import PageTitle from '../PageTitle';
-import ProductList from '../ProductList';
+import PageTitle from '../PageTitle/PageTitle';
+import ProductList from '../ProductList/ProductList';
 
 class ProductsPage extends Component {
 

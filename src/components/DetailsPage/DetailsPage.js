@@ -5,7 +5,7 @@ import { Container, Grid, Image, Button, Responsive } from 'semantic-ui-react';
 
 import { fetchProductBySlug, addToCart } from '../../store/actions';
 
-import PageTitle from '../PageTitle';
+import PageTitle from '../PageTitle/PageTitle';
 
 class Details extends Component {
 

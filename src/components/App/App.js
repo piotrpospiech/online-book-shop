@@ -5,12 +5,12 @@ import jwt from 'jsonwebtoken';
 
 import { loginUser } from '../../store/actions/auth/authActions';
 
-import Navbar from '../Navbar';
-import Shop from '../Shop';
-import Cart from '../Cart';
-import Details from '../Details';
-import Login from '../Login';
-import Dashboard from '../Dashboard/Dashboard';
+import Navbar from '../Navbar/Navbar';
+import Shop from '../ShopPage/ShopPage';
+import Cart from '../Cart/Cart';
+import Details from '../DetailsPage/DetailsPage';
+import Login from '../LoginPage/LoginPage';
+import Dashboard from '../DashboardPage/DashboardPage';
 import ProductsPage from '../ProductsPage/ProductsPage';
 
 class App extends Component {

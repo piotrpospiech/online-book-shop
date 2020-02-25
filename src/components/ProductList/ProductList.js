@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Grid, Responsive } from 'semantic-ui-react';
 
-import ProductCard from '../ProductCard';
+import ProductCard from '../ProductCard/ProductCard';
 
 class ProductList extends Component {
 

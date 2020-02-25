@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import { fetchProducts } from '../../store/actions';
 
-import PageTitle from '../PageTitle';
-import ProductList from '../ProductList';
+import PageTitle from '../PageTitle/PageTitle';
+import ProductList from '../ProductList/ProductList';
 
 class Shop extends Component {
 
