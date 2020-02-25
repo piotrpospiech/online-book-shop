@@ -7,6 +7,8 @@ class ProductList extends Component {
 
   renderProducts(products, columns) {
 
+    const { admin } = this.props;
+
     let rows = [[]];
     let rowIndex = 0;
 
@@ -15,7 +17,13 @@ class ProductList extends Component {
         return (
           <Grid.Row key={`row-${index}`}>
             <Grid.Column textAlign='center'>
-              <ProductCard product={product} />
+              {
+                admin ? (
+                  <ProductCard admin product={product} />
+                ) : (
+                  <ProductCard product={product} />
+                )
+              }
             </Grid.Column>
           </Grid.Row>
         );
@@ -40,7 +48,13 @@ class ProductList extends Component {
               row.map((product, index) => {
                 return (
                   <Grid.Column key={`column-${index}`} textAlign='center'>
-                    <ProductCard product={product} />
+                    {
+                      admin ? (
+                        <ProductCard admin product={product} />
+                      ) : (
+                        <ProductCard product={product} />
+                      )
+                    }
                   </Grid.Column>
                 )
               })
