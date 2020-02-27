@@ -5,6 +5,13 @@ import PageTitle from '../PageTitle/PageTitle';
 
 class Cart extends Component {
 
+  constructor(props) {
+    super(props);
+
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    this.state = { cart };
+  }
+
   renderProducts = (products) => {
     return products.map((product, index) => {
       return (
@@ -17,9 +24,14 @@ class Cart extends Component {
     });
   };
 
+  handleResetCartButton = () => {
+    localStorage.removeItem('cart');
+    this.setState({ cart: [] });
+  };
+
   render() {
 
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const { cart } = this.state;
 
     let total = 0;
     let numOfProducts = 0;
@@ -56,8 +68,8 @@ class Cart extends Component {
                 </Table.Footer>
               </Table>
 
-              <Button floated='right' color='teal' icon='shopping cart' content='Checkout' />
-              <Button floated='right' basic color='red' icon='trash' content='Reset cart' />
+              <Button floated='right' color='teal' icon='shopping cart' content='Checkout'/>
+              <Button floated='right' basic color='red' icon='trash' content='Reset cart' onClick={this.handleResetCartButton}/>
             </Fragment>
           ) : (
             <Message
