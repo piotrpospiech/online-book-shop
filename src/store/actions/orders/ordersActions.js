@@ -2,7 +2,8 @@ import shopServer from '../../api';
 
 import {
   FETCH_ORDERS,
-  UPDATE_ORDER
+  UPDATE_ORDER,
+  SEND_ORDER
 } from '../../types';
 
 export const fetchOrders = (completed) => async dispatch => {
@@ -24,6 +25,15 @@ export const updateOrder = (id) => async dispatch => {
       type: UPDATE_ORDER,
       payload: response.data
     });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const sendOrder = (data) => async () => {
+  try {
+    const response = await shopServer.post('orders', data);
+    return response.status;
   } catch (err) {
     console.error(err);
   }
