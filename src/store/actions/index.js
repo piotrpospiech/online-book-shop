@@ -2,8 +2,7 @@ import shopServer from '../api';
 
 import {
   FETCH_PRODUCTS,
-  FETCH_PRODUCT_BY_SLUG,
-  ADD_TO_CART
+  FETCH_PRODUCT_BY_SLUG
 } from '../types';
 
 export const fetchProducts = () => async dispatch => {
@@ -24,17 +23,6 @@ export const fetchProductBySlug = (slug) => async dispatch => {
     dispatch({
       type: FETCH_PRODUCT_BY_SLUG,
       payload: response.data
-    });
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-export const addToCart = (product) => async dispatch => {
-  try {
-    dispatch({
-      type: ADD_TO_CART,
-      payload: product
     });
   } catch (err) {
     console.error(err);

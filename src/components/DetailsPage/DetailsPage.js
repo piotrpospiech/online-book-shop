@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import { connect } from 'react-redux';
 import { Container, Grid, Image, Button, Responsive } from 'semantic-ui-react';
 
-import { fetchProductBySlug, addToCart } from '../../store/actions';
+import { fetchProductBySlug } from '../../store/actions';
 
 import PageTitle from '../PageTitle/PageTitle';
 
@@ -22,7 +22,7 @@ class Details extends Component {
   handleCartButton = () => {
     const { product } = this.props;
 
-    this.props.addToCart(product);
+    // this.props.addToCart(product);
 
     this.setState({
       isAdded: true
@@ -78,12 +78,10 @@ class Details extends Component {
 
 const mapStateToProps = (state) => {
   return {
-      product: state.product,
-      cart: state.cart
+      product: state.product
   };
 };
 
 export default connect(mapStateToProps, {
-  fetchProductBySlug,
-  addToCart
+  fetchProductBySlug
 })(withRouter(Details));
