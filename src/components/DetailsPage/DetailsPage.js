@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { withRouter } from "react-router";
 import { connect } from 'react-redux';
-import { Container, Grid, Image, Button, Responsive } from 'semantic-ui-react';
+import { Container, Grid, Image, Button, Responsive, Input } from 'semantic-ui-react';
 
 import { fetchProductBySlug } from '../../store/actions';
 
@@ -11,7 +11,10 @@ class Details extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { isAdded: false };
+    this.state = { 
+      isAdded: false,
+      quantity: 1
+    };
   }
 
   componentDidMount() {
@@ -21,17 +24,44 @@ class Details extends Component {
 
   handleCartButton = () => {
     const { product } = this.props;
+    const { quantity, isAdded } = this.state;
 
-    // this.props.addToCart(product);
+    if (!isAdded) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let currentProduct = cart.find(p => p.slug === product.slug);
 
-    this.setState({
-      isAdded: true
+      if(currentProduct) {
+        currentProduct.quantity += quantity;
+        cart = [ ...cart.filter(p => p.slug !== product.slug), currentProduct ];
+      }
+      else {
+        currentProduct = {
+          slug: product.slug,
+          quantity: quantity
+        };
+        cart.push(currentProduct);
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      this.setState({
+        isAdded: true
+      });
+    }
+  };
+
+  handleQuantityChange = (_, { value }) => {
+    if (value < 1) value = 1;
+    console.log(value)
+    this.setState({ 
+      quantity: parseInt(value),
+      isAdded: false
     });
   };
 
   renderProductText = (textAlign, addPriceMargin) => {
 
-    const { isAdded } = this.state;
+    const { isAdded, quantity } = this.state;
     const { title, author, description, price, image } = this.props.product;
 
     const marginRight = addPriceMargin ? '10px' : '0px';
@@ -47,7 +77,8 @@ class Details extends Component {
           <h3 style={{ fontSize: '1rem', marginTop: 0 }}>{author}</h3>
           <p>{description}</p>
           <h4 style={{ fontSize: '1.5rem', marginRight: {marginRight} }}>${price}</h4>
-          <Button primary onClick={this.handleCartButton}>{buttonText}</Button>
+          <Input type='number' label='Quantity' value={quantity} onChange={this.handleQuantityChange} /><br />
+          <Button primary onClick={this.handleCartButton} style={{ marginTop: '10px' }}>{buttonText}</Button>
         </Grid.Column>
       </Fragment>
     );
