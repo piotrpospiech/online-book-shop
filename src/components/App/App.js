@@ -12,6 +12,7 @@ import Details from '../DetailsPage/DetailsPage';
 import Login from '../LoginPage/LoginPage';
 import Dashboard from '../DashboardPage/DashboardPage';
 import ProductsPage from '../ProductsPage/ProductsPage';
+import Checkout from '../Checkout/Checkout';
 
 class App extends Component {
 
@@ -60,6 +61,7 @@ class App extends Component {
             </Route>
             <Route path='/cart' component={Cart} />
             <Route path='/shop' component={Shop} />
+            <Route path='/checkout' component={Checkout} />
             <Route path='/'>
               <Redirect to='/shop' />
             </Route>
