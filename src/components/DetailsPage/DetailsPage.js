@@ -36,7 +36,9 @@ class Details extends Component {
       }
       else {
         currentProduct = {
+          title: product.title,
           slug: product.slug,
+          price: product.price,
           quantity: quantity
         };
         cart.push(currentProduct);
