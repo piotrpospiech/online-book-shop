@@ -1,5 +1,6 @@
 import { 
-  FETCH_ORDERS, UPDATE_ORDER
+  FETCH_ORDERS, 
+  UPDATE_ORDER
 } from '../../types';
 
 export default (state = [], action) => {
