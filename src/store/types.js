@@ -1,6 +1,9 @@
 export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 export const FETCH_PRODUCT_BY_SLUG = 'FETCH_PRODUCT_BY_SLUG';
 
+export const FETCH_ORDERS = 'FETCH_ORDERS';
+export const UPDATE_ORDER = 'UPDATE_ORDER';
+
 export const ADD_TO_CART = 'ADD_TO_CART';
 
 export const LOGIN_USER = 'LOGIN_USER';
