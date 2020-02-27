@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Table, Container, Message, Button } from 'semantic-ui-react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import PageTitle from '../PageTitle/PageTitle';
 
@@ -73,7 +73,7 @@ class Cart extends Component {
                 </Table.Footer>
               </Table>
 
-              <Button as={NavLink} to={'/checkout'} floated='right' color='teal' icon='shopping cart' content='Checkout'/>
+              <Button as={Link} to={'/checkout'} floated='right' color='teal' icon='shopping cart' content='Checkout'/>
               <Button floated='right' basic color='red' icon='trash' content='Reset cart' onClick={this.handleResetCartButton}/>
             </Fragment>
           ) : (

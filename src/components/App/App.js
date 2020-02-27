@@ -13,6 +13,7 @@ import Login from '../LoginPage/LoginPage';
 import Dashboard from '../DashboardPage/DashboardPage';
 import ProductsPage from '../ProductsPage/ProductsPage';
 import Checkout from '../Checkout/Checkout';
+import CreateProductPage from '../CreateProductPage/CreateProductPage';
 
 class App extends Component {
 
@@ -35,7 +36,8 @@ class App extends Component {
       return (
         <Router>
           <Navbar />
-          <Switch>
+            <Switch>
+            <Route path='/admin-panel/add' component={CreateProductPage}/>
             {/* <Route path='/admin-panel/edit/:slug' children={<EditPage />} /> */}
             <Route path='/admin-panel/edit'>
               <Redirect to='/admin-panel/dashboard' />
