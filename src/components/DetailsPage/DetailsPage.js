@@ -61,7 +61,7 @@ class Details extends Component {
     });
   };
 
-  renderProductText = (textAlign, addPriceMargin) => {
+  renderProductDetails = (textAlign, addPriceMargin) => {
 
     const { isAdded, quantity } = this.state;
     const { title, author, description, price, image } = this.props.product;
@@ -95,13 +95,13 @@ class Details extends Component {
         <PageTitle title={title} leftColor='#343144' rightColor='#4ebbd2' />
         <Container style={{ marginTop: '20px' }}>
           <Responsive as={Grid} columns={1} {...Responsive.onlyMobile}>
-            {this.renderProductText('center', true)}
+            {this.renderProductDetails('center', true)}
           </Responsive>
           <Responsive as={Grid} columns={2} {...Responsive.onlyTablet}>
-            {this.renderProductText('left', false)}
+            {this.renderProductDetails('left', false)}
           </Responsive>
           <Responsive as={Grid} columns={2} {...Responsive.onlyComputer}>
-            {this.renderProductText('left', false)}
+            {this.renderProductDetails('left', false)}
           </Responsive>
         </Container>
       </main>
