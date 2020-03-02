@@ -53,8 +53,9 @@ class CheckoutPage extends Component {
       }
       else {
         if (key === 'email') {
-          const isEmail = validateEmail(inputs[key]);
-          errors[key] = isEmail ? null : 'Your email address is invalid!';
+          const isEmailValid = validateEmail(inputs[key]);
+          preventSend = isEmailValid ? preventSend : true;
+          errors[key] = isEmailValid ? null : 'Your email address is invalid!';
           continue;
         }
 

@@ -2,8 +2,7 @@ import shopServer from '../../api';
 
 import {
   FETCH_ORDERS,
-  UPDATE_ORDER,
-  SEND_ORDER
+  UPDATE_ORDER
 } from '../../types';
 
 export const fetchOrders = (completed) => async dispatch => {
