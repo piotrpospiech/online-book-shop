@@ -5,7 +5,7 @@ export const createProduct = (data) => async () => {
     const response = await shopServer.post('products', data, {
       headers: { 'Content-Type': 'multipart/form-data' }
     });
-    return response.status;
+    return response;
   } catch (err) {
     console.error(err);
   }

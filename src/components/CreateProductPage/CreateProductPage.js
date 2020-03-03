@@ -34,9 +34,9 @@ class CreateProductPage extends Component {
   renderProductDetails = (textAlign) => {
 
     const { inputs, errors, imagePreview, isCreated } = this.state;
-    const { productName, author, description, price } = inputs;
+    const { productName, author, description, price, file } = inputs;
 
-    const image = imagePreview ? imagePreview : '../../../public/image-wireframe.png';
+    const image = (imagePreview && file) ? imagePreview : '../../../public/image-wireframe.png';
 
     return (
       !isCreated ? (
@@ -128,8 +128,12 @@ class CreateProductPage extends Component {
       bodyFormData.append('file', file);
 
       const response = await this.props.createProduct(bodyFormData);
-      if (response === 201) {
+      if (response.status === 201) {
         this.setState({ isCreated: true });
+      }
+      else if (response.data.message) {
+        errors.productName = response.data.message;
+        this.setState({ errors });
       }
     }
   };
