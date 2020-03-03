@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from 'react-redux';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 import App from "./components/App/App";
 import { store } from './store/createStore';

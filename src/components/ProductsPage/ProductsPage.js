@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import { fetchProducts } from '../../store/actions';
 
@@ -21,7 +22,7 @@ class ProductsPage extends Component {
       <main>
         <PageTitle title='products' leftColor='#343144' rightColor='#343144' />
         <Container style={{ marginTop: '20px', height: '36px' }}>
-          <Button floated='right' primary>Add new</Button>
+          <Button as={Link} to='/admin-panel/add' floated='right' primary>Add new</Button>
         </Container>
         <ProductList admin products={products} />
       </main>
