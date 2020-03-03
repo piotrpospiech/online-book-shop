@@ -30,10 +30,6 @@ class Cart extends Component {
     this.setState({ cart: [] });
   };
 
-  handleCheckoutButton = () => {
-
-  };
-
   render() {
 
     const { cart } = this.state;

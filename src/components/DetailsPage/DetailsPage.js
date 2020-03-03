@@ -7,7 +7,7 @@ import { fetchProductBySlug } from '../../store/actions';
 
 import PageTitle from '../PageTitle/PageTitle';
 
-class Details extends Component {
+class DetailsPage extends Component {
 
   constructor(props) {
     super(props);
@@ -117,4 +117,4 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   fetchProductBySlug
-})(withRouter(Details));
+})(withRouter(DetailsPage));

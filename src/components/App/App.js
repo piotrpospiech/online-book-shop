@@ -8,12 +8,13 @@ import { loginUser } from '../../store/actions/auth/authActions';
 import Navbar from '../Navbar/Navbar';
 import Shop from '../ShopPage/ShopPage';
 import Cart from '../Cart/Cart';
-import Details from '../DetailsPage/DetailsPage';
+import DetailsPage from '../DetailsPage/DetailsPage';
 import Login from '../LoginPage/LoginPage';
 import Dashboard from '../DashboardPage/DashboardPage';
 import ProductsPage from '../ProductsPage/ProductsPage';
 import Checkout from '../Checkout/Checkout';
 import CreateProductPage from '../CreateProductPage/CreateProductPage';
+import EditProductPage from '../EditProductPage/EditProductPage';
 
 class App extends Component {
 
@@ -37,11 +38,11 @@ class App extends Component {
         <Router>
           <Navbar />
             <Switch>
-            <Route path='/admin-panel/add' component={CreateProductPage}/>
-            {/* <Route path='/admin-panel/edit/:slug' children={<EditPage />} /> */}
+            <Route path='/admin-panel/edit/:slug' children={<EditProductPage />} />
             <Route path='/admin-panel/edit'>
               <Redirect to='/admin-panel/dashboard' />
             </Route>
+            <Route path='/admin-panel/add' component={CreateProductPage}/>
             <Route path='/admin-panel/dashboard' component={Dashboard}/>
             <Route path='/admin-panel/products' component={ProductsPage}/>
             <Route path='*'>
@@ -57,7 +58,7 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route path='/admin-login' component={Login} />
-            <Route path='/details/:slug' children={<Details />} />
+            <Route path='/details/:slug' children={<DetailsPage />} />
             <Route path='/details'>
               <Redirect to='/shop' />
             </Route>
