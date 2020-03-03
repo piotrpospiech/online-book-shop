@@ -7,14 +7,12 @@ import validatePrice from '../../utils/validatePrice';
 import validateImage from '../../utils/validateImage';
 import PageTitle from '../PageTitle/PageTitle';
 import { fetchProductBySlug } from '../../store/actions';
-import { updateProduct } from '../../store/actions/products/productsActions';
+import { updateProduct, deleteProduct } from '../../store/actions/products/productsActions';
 
 class EditProductPage extends Component {
 
   constructor(props) {
     super(props);
-
-    const { title, author, description, price } = props.product;
 
     this.state = {
       inputs: {
@@ -49,14 +47,12 @@ class EditProductPage extends Component {
     this.setState({ inputs, imagePreview: image });
   }
 
-  handleDeleteProductButton = () => {
-
-  };
-
   renderProductDetails = (textAlign) => {
 
     const { inputs, errors, imagePreview, isEdited } = this.state;
-    const { productName, author, description, price, file } = inputs;
+    const { productName, author, description, price } = inputs;
+
+    const { slug } = this.props.product;
 
 
     const image = imagePreview;
@@ -68,7 +64,7 @@ class EditProductPage extends Component {
             <Image src={image} alt='Image preview'/>
           </Grid.Column>
           <Grid.Column textAlign={textAlign}>
-            <Button floated='right' basic color='red' icon='trash' content='Delete product' onClick={this.handleDeleteProductButton}/>
+            <Button floated='right' basic color='red' icon='trash' content='Delete product' onClick={this.handleDeleteProductButton(slug)}/>
             <Header as='h3' style={{ marginTop: 0 }}>{productName}</Header>
             <Form onSubmit={this.handleSubmit}>
               <Form.Input label='Author' name='author' value={author} placeholder='Author' onChange={this.handleInputChange} error={errors.author}/>
@@ -86,6 +82,11 @@ class EditProductPage extends Component {
         />
       )
     );
+  };
+
+  handleDeleteProductButton = (slug) => async () => {
+    await this.props.deleteProduct(slug);
+    this.props.history.push('/admin-panel/products');
   };
 
   handleInputChange = (_, { name, value }) => {
@@ -161,7 +162,6 @@ class EditProductPage extends Component {
   };
 
   render() {
-
     return (
       <main>
         <PageTitle title='edit' leftColor='#343144' rightColor='#343144' />
@@ -189,5 +189,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   fetchProductBySlug,
-  updateProduct
+  updateProduct,
+  deleteProduct
 })(withRouter(EditProductPage));
