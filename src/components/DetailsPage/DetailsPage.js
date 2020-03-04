@@ -80,7 +80,7 @@ class DetailsPage extends Component {
           <p>{description}</p>
           <h4 style={{ fontSize: '1.5rem', marginRight: {marginRight} }}>${price}</h4>
           <Input type='number' label='Quantity' value={quantity} onChange={this.handleQuantityChange} /><br />
-          <Button primary onClick={this.handleCartButton} style={{ marginTop: '10px' }}>{buttonText}</Button>
+          <Button color='teal' onClick={this.handleCartButton} style={{ marginTop: '10px' }}>{buttonText}</Button>
         </Grid.Column>
       </Fragment>
     );

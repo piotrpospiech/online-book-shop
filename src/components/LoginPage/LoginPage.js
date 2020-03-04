@@ -54,7 +54,7 @@ class Login extends Component {
     return (
       <Grid textAlign='center' style={{ height: '70vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='blue' textAlign='center'>
+          <Header as='h2' color='teal' textAlign='center'>
             Log-in to your account
           </Header>
           <Message negative hidden={hideMessage}>
@@ -84,7 +84,7 @@ class Login extends Component {
                 onChange={this.onChange}
               />
   
-              <Button onClick={this.onSubmit} color='blue' fluid size='large'>Login</Button>
+              <Button onClick={this.onSubmit} color='teal' fluid size='large'>Login</Button>
             </Segment>
           </Form>
         </Grid.Column>
