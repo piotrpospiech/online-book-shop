@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import validatePrice from '../../utils/validatePrice';
 import validateImage from '../../utils/validateImage';
 import PageTitle from '../PageTitle/PageTitle';
-import { fetchProductBySlug } from '../../store/actions';
+import { fetchProductBySlug } from '../../store/actions/products/productsActions';
 import { updateProduct, deleteProduct } from '../../store/actions/products/productsActions';
 
 class EditProductPage extends Component {
