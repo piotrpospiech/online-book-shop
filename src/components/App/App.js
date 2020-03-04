@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Dimmer, Loader } from 'semantic-ui-react';
 import jwt from 'jsonwebtoken';
 
 import { loginUser } from '../../store/actions/auth/authActions';
@@ -21,6 +22,12 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      isLoading: true
+    };
+  }
+
+  async componentDidMount() {
     if (localStorage.getItem('jwt') && !this.props.auth.isAuthenticated) {
       const auth = jwt.decode(localStorage.getItem('jwt'));
       const loginData = {
@@ -28,11 +35,24 @@ class App extends Component {
         password: auth.user.password
       };
 
-      this.props.loginUser(loginData);
+      await this.props.loginUser(loginData);
     }
+
+    this.setState({ isLoading: false });
   }
 
   render() {
+
+    const { isLoading } = this.state;
+
+    if (isLoading) {
+      return (
+        <Dimmer active inverted>
+          <Loader />
+        </Dimmer>
+      )
+    }
+
     if (this.props.auth.isAuthenticated) {
       return (
         <Router>
