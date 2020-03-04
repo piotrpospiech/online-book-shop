@@ -28,9 +28,9 @@ class Login extends Component {
       const loginData = { username, password }
 
       try {
-        this.props.loginUser(loginData);
+        await this.props.loginUser(loginData);
 
-        if (!this.props.auth.isAuthenticated) {
+        if (this.props.auth.message) {
           this.setState({ hideMessage: false });
         }
       }
