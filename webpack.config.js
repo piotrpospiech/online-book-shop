@@ -17,13 +17,31 @@ module.exports = {
             loader: 'html-loader'
           }
         ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            }
+          }
+        ]
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true
+  },
+  output: {
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
-      filename: './index.html'
+      filename: './index.html',
+      favicon: './public/favicon.ico'
     })
   ]
 };
