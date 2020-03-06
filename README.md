@@ -24,6 +24,8 @@ Funkcje administratora:
 * Express.js
 * MongoDB
 * JSON Web Token
+
+#### Backend projektu dostępny jest pod tym adresem: https://github.com/piotrpospiech/online-book-shop-server
   
 #### Sklep
 <img src='./readme_files/shop.gif' alt='Shop'>
