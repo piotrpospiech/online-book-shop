@@ -16,8 +16,10 @@ class ProductCard extends Component {
   renderCard = () => {
 
     const { active } = this.state;
-    const { image, title, slug, author, price } = this.props.product;
+    const { image, title, slug, author } = this.props.product;
     const { admin } = this.props;
+    let { price } = this.props.product;
+    price = price.toFixed(2);
 
     const buttonText = admin ? 'Edit' : 'Details';
     const goTo = admin ? `edit/${slug}` : `details/${slug}`;

@@ -51,9 +51,7 @@ class EditProductPage extends Component {
 
     const { inputs, errors, imagePreview, isEdited } = this.state;
     const { productName, author, description, price } = inputs;
-
     const { slug } = this.props.product;
-
 
     const image = imagePreview;
 

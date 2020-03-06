@@ -34,8 +34,11 @@ class CreateProductPage extends Component {
   renderProductDetails = (textAlign) => {
 
     const { inputs, errors, imagePreview, isCreated } = this.state;
-    const { productName, author, description, price, file } = inputs;
+    const { productName, author, description, file } = inputs;
+    let { price } = inputs;
 
+    price = price.toFixed(2);
+    
     const image = (imagePreview && file) ? imagePreview : '../../../public/image-wireframe.png';
 
     return (

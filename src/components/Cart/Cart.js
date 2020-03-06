@@ -18,7 +18,7 @@ class Cart extends Component {
       return (
         <Table.Row key={`product-${index}`}>
           <Table.Cell>{product.title}</Table.Cell>
-          <Table.Cell>${product.price}</Table.Cell>
+          <Table.Cell>${product.price.toFixed(2)}</Table.Cell>
           <Table.Cell>{product.quantity}</Table.Cell>
         </Table.Row>
       );

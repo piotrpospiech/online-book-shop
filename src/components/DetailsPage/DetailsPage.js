@@ -64,8 +64,10 @@ class DetailsPage extends Component {
   renderProductDetails = (textAlign, addPriceMargin) => {
 
     const { isAdded, quantity } = this.state;
-    const { title, author, description, price, image } = this.props.product;
-
+    const { title, author, description, image } = this.props.product;
+    let { price } = this.props.product;
+    price =  price ? price.toFixed(2) : undefined;
+    
     const marginRight = addPriceMargin ? '10px' : '0px';
     const buttonText = isAdded ? 'Added!' : 'Add to cart';
 
