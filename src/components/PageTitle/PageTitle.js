@@ -11,7 +11,8 @@ const PageTitle = (props) => {
     top: '50%',
     transform: 'translate(-50%, -50%)',
     color: '#fff',
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    textAlign: 'center'
   }
 
   return (
