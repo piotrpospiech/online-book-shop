@@ -37,9 +37,11 @@ class Cart extends Component {
     let total = 0;
     let numOfProducts = 0;
     cart.forEach(product => {
-      total += product.price;
+      total += product.price * product.quantity;
       numOfProducts += product.quantity;
     });
+
+    total = total.toFixed(2);
     
     return (
       <main>
