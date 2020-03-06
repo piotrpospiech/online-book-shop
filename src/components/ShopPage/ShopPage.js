@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchProducts } from '../../store/actions';
+import { fetchProducts } from '../../store/actions/products/productsActions';
 
 import PageTitle from '../PageTitle/PageTitle';
 import ProductList from '../ProductList/ProductList';

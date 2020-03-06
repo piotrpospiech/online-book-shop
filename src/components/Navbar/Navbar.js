@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container, Menu } from 'semantic-ui-react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 class Navbar extends Component {
 
@@ -78,7 +78,7 @@ class Navbar extends Component {
       <Menu pointing secondary>
         <Container>
           <Menu.Item 
-            as={ NavLink }
+            as={ Link }
             to='/shop'
             name='shop'
             onClick={this.handleItemClick}

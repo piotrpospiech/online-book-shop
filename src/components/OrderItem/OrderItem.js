@@ -23,7 +23,7 @@ class OrderItem extends Component {
       return (
         <Table.Row key={`product-${index}`}>
           <Table.Cell>{product.title}</Table.Cell>
-          <Table.Cell>${product.price}</Table.Cell>
+          <Table.Cell>${product.price.toFixed(2)}</Table.Cell>
           <Table.Cell>{product.quantity}</Table.Cell>
         </Table.Row>
       );
@@ -52,7 +52,7 @@ class OrderItem extends Component {
         </List.Content>
         <List.Content floated='right'>
           <Modal 
-          trigger={<Button onClick={this.handleOpen}>Show</Button>}
+          trigger={<Button color='teal' onClick={this.handleOpen}>Show</Button>}
           open={this.state.modalOpen}
           onClose={this.handleClose}
           >

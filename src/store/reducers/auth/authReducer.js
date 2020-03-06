@@ -12,7 +12,8 @@ export default (state = initialState, action) => {
     case LOGIN_USER:
       return {
         isAuthenticated: (action.user != undefined),
-        user: action.user
+        user: action.user,
+        message: action.message
       }
     default:
       return state;

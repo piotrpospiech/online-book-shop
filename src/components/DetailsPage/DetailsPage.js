@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import { connect } from 'react-redux';
 import { Container, Grid, Image, Button, Responsive, Input } from 'semantic-ui-react';
 
-import { fetchProductBySlug } from '../../store/actions';
+import { fetchProductBySlug } from '../../store/actions/products/productsActions';
 
 import PageTitle from '../PageTitle/PageTitle';
 
@@ -64,8 +64,10 @@ class DetailsPage extends Component {
   renderProductDetails = (textAlign, addPriceMargin) => {
 
     const { isAdded, quantity } = this.state;
-    const { title, author, description, price, image } = this.props.product;
-
+    const { title, author, description, image } = this.props.product;
+    let { price } = this.props.product;
+    price =  price ? price.toFixed(2) : undefined;
+    
     const marginRight = addPriceMargin ? '10px' : '0px';
     const buttonText = isAdded ? 'Added!' : 'Add to cart';
 
@@ -80,7 +82,7 @@ class DetailsPage extends Component {
           <p>{description}</p>
           <h4 style={{ fontSize: '1.5rem', marginRight: {marginRight} }}>${price}</h4>
           <Input type='number' label='Quantity' value={quantity} onChange={this.handleQuantityChange} /><br />
-          <Button primary onClick={this.handleCartButton} style={{ marginTop: '10px' }}>{buttonText}</Button>
+          <Button color='teal' onClick={this.handleCartButton} style={{ marginTop: '10px' }}>{buttonText}</Button>
         </Grid.Column>
       </Fragment>
     );

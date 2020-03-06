@@ -18,7 +18,7 @@ class Cart extends Component {
       return (
         <Table.Row key={`product-${index}`}>
           <Table.Cell>{product.title}</Table.Cell>
-          <Table.Cell>${product.price}</Table.Cell>
+          <Table.Cell>${product.price.toFixed(2)}</Table.Cell>
           <Table.Cell>{product.quantity}</Table.Cell>
         </Table.Row>
       );
@@ -37,9 +37,11 @@ class Cart extends Component {
     let total = 0;
     let numOfProducts = 0;
     cart.forEach(product => {
-      total += product.price;
+      total += product.price * product.quantity;
       numOfProducts += product.quantity;
     });
+
+    total = total.toFixed(2);
     
     return (
       <main>
